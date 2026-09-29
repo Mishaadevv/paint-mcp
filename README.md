@@ -22,7 +22,7 @@ registry an agent calls over MCP. Re-generate them any time with `npm run demo`.
 **One command (any agent / any machine, Node 20+):**
 
 ```bash
-git clone https://github.com/mishadev/paint-mcp.git && cd paint-mcp && npm install && npm run build
+git clone https://github.com/Mishaadevv/paint-mcp.git && cd paint-mcp && npm install && npm run build
 ```
 
 Then register it with your MCP client (Qoder CLI, Claude Desktop, Cursor, …):
@@ -45,7 +45,7 @@ Qoder CLI users can do it in one line:
 qodercli mcp add paint node /absolute/path/to/paint-mcp/dist/index.js --scope user
 ```
 
-Once published to npm the same config collapses to `npx -y paint-mcp-server`.
+Once the package is on npm the same config collapses to `npx -y paint-mcp-server` (see [Development](#development) for how a release is cut).
 
 Reload MCP servers in a running session with `/mcp reload`, then say:
 *“draw a 640×400 sunset over hills and export it”*.
@@ -157,6 +157,10 @@ npm run demo       # renders canvases/demo/*.png through the op registry
 
 Layout: `src/core` (engine: colour, raster, paths, filters, codecs, document, ops), `src/util`
 (config, preview, live server, tool registration), `src/index.ts` (MCP entry), `test`, `scripts`.
+
+Releasing to npm: store an Automation token once with `gh secret set NPM_TOKEN`, then
+`git tag v1.0.0 && git push --tags` — the release workflow builds, runs the tests and publishes
+`paint-mcp-server`.
 
 ## License
 
