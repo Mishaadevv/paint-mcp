@@ -1,0 +1,66 @@
+{
+  "name": "paint-mcp-server",
+  "version": "1.0.0",
+  "description": "A real paint canvas over MCP: layers, anti-aliased primitives, brushes, filters, PNG/BMP/JPEG import-export — with every tool returning the picture back to the agent.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "paint-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./core": "./dist/core/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test": "npm run build && node --test \"test/**/*.test.mjs\"",
+    "demo": "node scripts/demo.mjs",
+    "check": "npm run build && npm test && npm run demo"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "paint",
+    "canvas",
+    "drawing",
+    "raster",
+    "image",
+    "png",
+    "svg",
+    "ai-agents"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mishaadevv/paint-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mishaadevv/paint-mcp/issues"
+  },
+  "homepage": "https://github.com/Mishaadevv/paint-mcp#readme",
+  "author": "Mishaadevv",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0",
+    "jpeg-js": "^0.4.4",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.0",
+    "typescript": "5.9"
+  }
+}
